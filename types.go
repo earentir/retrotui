@@ -46,3 +46,60 @@ type UIState struct {
 	MenuItems        []MenuItem // For the menu screen
 	CurrentSelection int        // For the menu screen
 }
+
+// MenuConfig contains all configuration options for a selection menu
+type MenuConfig struct {
+	// Application information
+	AppName       string
+	CopyrightText string
+
+	// Menu items
+	MenuItems []MenuItem
+
+	// Default instruction text
+	DefaultInstructionText string
+
+	// Color scheme
+	Background        tcell.Color
+	TitleBarFg        tcell.Color
+	TitleBarBg        tcell.Color
+	StatusBarFg       tcell.Color
+	StatusBarBg       tcell.Color
+	MainSelectionBg   tcell.Color
+	SelectionActiveBg tcell.Color
+	SelectionNumFg    tcell.Color
+	SelectionTextFg   tcell.Color
+	InstructionBoxFg  tcell.Color
+	InstructionBoxBg  tcell.Color
+
+	// Key bindings
+	ExitKeys  []tcell.Key
+	ExitRunes []rune
+
+	// Behavior options
+	ReturnToMenuAfterSelection bool
+}
+
+// NavigationAction represents a navigation action
+type NavigationAction int
+
+const (
+	NavNone NavigationAction = iota
+	NavUp
+	NavDown
+	NavLeft
+	NavRight
+	NavSelect
+	NavExit
+)
+
+// KeyConfig holds configuration for keyboard shortcuts
+type KeyConfig struct {
+	ExitKeys    []tcell.Key // Keys that will exit the application
+	ExitRunes   []rune      // Runes that will exit the application
+	NavUpKey    tcell.Key   // Key for navigating up
+	NavDownKey  tcell.Key   // Key for navigating down
+	NavLeftKey  tcell.Key   // Key for navigating left
+	NavRightKey tcell.Key   // Key for navigating right
+	SelectKey   tcell.Key   // Key for selection
+}
