@@ -1,8 +1,11 @@
-module retrotui
+module github.com/earentir/retrotui/examples/windows
 
 go 1.24.1
 
-require github.com/gdamore/tcell/v2 v2.8.1
+require (
+	github.com/earentir/retrotui v0.0.0
+	github.com/gdamore/tcell/v2 v2.8.1
+)
 
 require (
 	github.com/gdamore/encoding v1.0.1 // indirect
@@ -13,3 +16,5 @@ require (
 	golang.org/x/term v0.28.0 // indirect
 	golang.org/x/text v0.21.0 // indirect
 )
+
+replace github.com/earentir/retrotui => ../../
