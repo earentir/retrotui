@@ -202,9 +202,6 @@ func handleDialogScreenEvents(s tcell.Screen, ev tcell.Event) {
 	}
 }
 
-// ----------------------------------------------------------------------------
-// drawMenuScreenUI — original code
-// ----------------------------------------------------------------------------
 func drawMenuScreenUI(s tcell.Screen, selected int) {
 	// Background
 	retrotui.DrawBackground(s, state.Background, true, ' ')
@@ -224,9 +221,6 @@ func drawMenuScreenUI(s tcell.Screen, selected int) {
 	s.Show()
 }
 
-// ----------------------------------------------------------------------------
-// drawMainScreenUI — original code (unchanged)
-// ----------------------------------------------------------------------------
 func drawMainScreenUI(s tcell.Screen) {
 	// Background
 	retrotui.DrawBackground(s, state.Background, true, ' ')
@@ -264,9 +258,6 @@ func drawMainScreenUI(s tcell.Screen) {
 	s.Show()
 }
 
-// ----------------------------------------------------------------------------
-// handleMainScreenEvents — original code (unchanged)
-// ----------------------------------------------------------------------------
 func handleMainScreenEvents(s tcell.Screen, ev tcell.Event) {
 	// First give top‑most window a chance
 	if len(appWindows) > 0 {
@@ -416,9 +407,6 @@ func handleMainScreenEvents(s tcell.Screen, ev tcell.Event) {
 	}
 }
 
-// ----------------------------------------------------------------------------
-// createWindow — original helper (unchanged)
-// ----------------------------------------------------------------------------
 func createWindow(s tcell.Screen, title string, content func(s tcell.Screen, x, y, width, height int)) {
 	sw, sh := s.Size()
 	w, h := 50, 15
@@ -429,9 +417,6 @@ func createWindow(s tcell.Screen, title string, content func(s tcell.Screen, x, 
 	drawMainScreenUI(s)
 }
 
-// ----------------------------------------------------------------------------
-// initialiseWindowsAndMenus — original code lifted verbatim
-// ----------------------------------------------------------------------------
 func initialiseWindowsAndMenus(screen tcell.Screen) {
 	appWindows = make([]*retrotui.Window, 0)
 	appMenus = []retrotui.Menu{
@@ -560,13 +545,10 @@ func handleWizardEvents(s tcell.Screen, ev tcell.Event) {
 		}
 		drawWizardUI(s)
 	case *tcell.EventMouse:
-		// simple hit‑test for button clicks (optional)
+		// simple hit‑test for button clicks
 	}
 }
 
-// ----------------------------------------------------------------------------
-// main — entry point (minor edits for new dialog screen routing)
-// ----------------------------------------------------------------------------
 func main() {
 	screen, err := tcell.NewScreen()
 	if err != nil {
@@ -591,7 +573,7 @@ func main() {
 		CurrentSelection: 0,
 		ActiveMenu:       -1,
 		ActiveMenuItem:   -1,
-		MenuBarActive:    false,
+		MenuBarActive:    true,
 	}
 
 	initialiseWindowsAndMenus(screen)
